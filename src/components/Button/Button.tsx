@@ -1,9 +1,14 @@
 import React from 'react'
 import './Button.css'
 
-const Button = () => {
+declare interface ButtonProps{
+    content?: string 
+    //propriedade opcional
+}
+
+const Button: React.FC<ButtonProps> = (props) => {
     return <button className="AppButton">
-        Botão
+    { props.content || 'NameLess button'}
     </button>
 }
 
