@@ -7,7 +7,8 @@ declare interface ButtonProps{
 }
 
 const Button: React.FC<ButtonProps> = (props) => {
-    return <button className="AppButton">
+    return <button className="AppButton"
+    onClick={window.alert}>
     { props.content || 'NameLess button'}
     </button>
 }
