@@ -3,12 +3,13 @@ import './Button.css'
 
 declare interface ButtonProps{
     content?: string 
-    //propriedade opcional
+    onClick?: () => void //método(prop) qualquer que retorna void
 }
 
 const Button: React.FC<ButtonProps> = (props) => {
     return <button className="AppButton"
-    onClick={window.alert}>
+    onClick={props.onClick}
+    >
     { props.content || 'NameLess button'}
     </button>
 }

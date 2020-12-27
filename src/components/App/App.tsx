@@ -11,7 +11,9 @@ function App() {
       <Header title="AlgaStock" />
       
       <div className="Container">
-        <Button />
+        <Button content="Click me"
+        //deve tipar o onClick
+        onClick={()=>window.alert('Windowns alert personalizado')}/>
        
       </div>
 
