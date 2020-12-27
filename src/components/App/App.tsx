@@ -11,14 +11,18 @@ function App() {
       <Header title="AlgaStock" />
       
       <div className="Container">
-        <Button content="Click me"
-        //deve tipar o onClick
-        onClick={()=>window.alert('Windowns alert personalizado')}/>
+        <Button  
+        onClick={()=>window.alert('Windowns alert personalizado')}
+        >
+        Stark  
+        <img src="https://rollingstone.uol.com.br/media/_versions/tony-stark-iron-man-danslott-reprod-marvel-comics_widelg.jpg" alt="stark"/>
+
+       </Button>
        
       </div>
 
     </div>
   );
 }
-
+// imagem ou string - stark - props.children o captura
 export default App;

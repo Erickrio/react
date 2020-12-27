@@ -10,8 +10,8 @@ const Button: React.FC<ButtonProps> = (props) => {
     return <button className="AppButton"
     onClick={props.onClick}
     >
-    { props.content || 'NameLess button'}
+    { props.children || 'NameLess button'}
     </button>
 }
-
+//props.children - caatura tudo q está dentro no componente
 export default Button
