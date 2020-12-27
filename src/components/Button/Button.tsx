@@ -3,7 +3,8 @@ import './Button.css'
 
 declare interface ButtonProps{
     content?: string 
-    onClick?: () => void //método(prop) qualquer que retorna void
+    onClick?: () => void 
+    appendIcon: JSX.Element
 }
 
 const Button: React.FC<ButtonProps> = (props) => {
@@ -11,6 +12,7 @@ const Button: React.FC<ButtonProps> = (props) => {
     onClick={props.onClick}
     >
     { props.children || 'NameLess button'}
+    { props.appendIcon }
     </button>
 }
 //props.children - caatura tudo q está dentro no componente

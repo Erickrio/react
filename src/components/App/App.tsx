@@ -5,6 +5,10 @@ import Header from '../Header';
 import Button from '../Button';
 //import TestComponent from './components/TestComponent/TestComponent'
 
+function TestComponent () {
+  return <img width="16" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Search_Icon.svg/1024px-Search_Icon.svg.png"  alt="serch icon"/>
+}
+
 function App() {
   return (
     <div className="App">
@@ -12,10 +16,10 @@ function App() {
       
       <div className="Container">
         <Button  
-        onClick={()=>window.alert('Windowns alert personalizado')}
+        onClick={()=>window.alert('Uiiii ui ')}
+        appendIcon={<TestComponent />}
         >
-        Stark  
-        <img src="https://rollingstone.uol.com.br/media/_versions/tony-stark-iron-man-danslott-reprod-marvel-comics_widelg.jpg" alt="stark"/>
+       alert
 
        </Button>
        
