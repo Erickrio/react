@@ -1,13 +1,20 @@
 import React from 'react'
 import './Input.css'
 
-const Input = () => {
-    return <div className="AppInput">
-        <label>
-            <span>Street</span>
-            <input placeholder="15th avenue"></input>
-        </label>   
-    </div>
+declare interface InputProps extends React.InputHTMLAttributes<HTMLInputElement>{
+    label:string
 }
 
-export default Input
+//Tipagem - react.FC
+const Input: React.FC<InputProps> = (props) => {
+    return <div className="AppInput">
+      <label>
+        <span>{ props.label }</span>
+        <input
+          {...props}
+        />
+      </label>
+    </div>
+  }
+  
+  export default Input

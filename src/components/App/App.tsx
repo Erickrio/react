@@ -1,5 +1,4 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
 import Header from '../Header';
 import Button from '../../shared/Button';
@@ -8,26 +7,32 @@ import Input from '../../shared/Input/Input';
 
 
 function TestComponent () {
-  return <img width="16" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Search_Icon.svg/1024px-Search_Icon.svg.png"  alt="serch icon"/>
+  return <img width="16" src="https://img.icons8.com/pastel-glyph/2x/search--v2.png" alt="search icon" />
 }
 
 function App() {
+  const [street, setStreet] = useState('')
+
   return (
     <div className="App">
       <Header title="AlgaStock" />
-      
-      <Container>
-        <Button  
-        onClick={()=>window.alert('Uiiii ui ')}
-        appendIcon={<TestComponent />}
-        >
-       alert
-       </Button>
-       <Input></Input>
-      </Container>
 
+      <Container>
+        <Button
+          onClick={() => window.alert('UIIIU')}
+          appendIcon={<TestComponent />}
+        >
+          Alert
+        </Button>
+        <Input
+          label="Street"
+          placeholder="E.g.: 15h Avenue"
+          value={street}
+          onChange={e => setStreet(e.target.value)}
+        />
+      </Container>
     </div>
   );
 }
-// imagem ou string - stark - props.children o captura
+
 export default App;
