@@ -4,3 +4,45 @@
 @npm uninstall node-sass
 @npm install node-sass@4.14.1
 */
+
+table.AppTable {
+  width: 100%;
+  box-shadow: 0 3px 6px rgba(#000,.1);
+  border-collapse:collapse;
+
+  thead {
+    background-color:#09f;
+
+    tr th {
+        color: rgba(#fff, .8);
+        text-align: left;
+        padding:7px 10px;
+        font-size: .8em;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: .75px;
+
+        //acessa o pai e não os filhos da classe - se tiver a classe right
+        &.right{
+            text-align: right
+
+        }
+    }
+  }
+
+  tbody {
+      tr {
+          &:hover{
+            background-color:rgba(#000, .05);
+          }
+      td {
+        padding: 7px 10px;
+        color: #222;
+        &.right{
+            text-align: right
+
+        }
+      }
+    }
+  }
+}
