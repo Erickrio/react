@@ -5,6 +5,7 @@ import Products from './Table.mockdata'
 const headers = [
     { key: 'name', value: 'Product' },
     { key: 'price', value: 'Price' },
+    { key: 'actions', value: 'Actions' },
     { key: 'stock', value: 'Available Stock' },
   ]
 
