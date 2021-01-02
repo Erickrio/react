@@ -1,64 +1,32 @@
 import React from 'react';
+import organizeData from '../../utils/organizeDataForTable';
 import './Table.scss';
-import Products from './Table.mockdata'
-
-const headers: TableHeader[] = [
-    { key: 'id', value: '#' },
-    { key: 'name', value: 'Product' },
-    { key: 'price', value: 'Price', right: true },
-    { key: 'stock', value: 'Available Stock', right: true }
-  ]
-  
-  declare interface TableHeader {
+ 
+  export interface TableHeader {
     key: string
     value: string
     right?: boolean //propriedade opcional
   }
-  
-  type IndexedHeaders = {
-    [key: string]: TableHeader
-  }
-  
-  type OrganizedItem = {
-    [key: string]: any
-  }
-  
-  function organizeData (data: any[], headers: TableHeader[]):
-    [OrganizedItem[], IndexedHeaders] {
-    const indexedHeaders: IndexedHeaders = {}
-  
-    headers.forEach(header => {
-      indexedHeaders[header.key] = {
-        ...header
-      }
-    })
-  
-    const headerKeysInOrder = Object.keys(indexedHeaders)
-  
-    const organizedData = data.map(item => {
-      const organizedItem: OrganizedItem = {}
-  
-      headerKeysInOrder.forEach(key => {
-        organizedItem[key] = item[key]
-      })
-  
-      organizedItem.$original = item
-  
-      return organizedItem
-    })
-    console.table(organizedData)
-    return [organizedData, indexedHeaders]
 
-    
-  }
+  declare interface TableProps {
+    headers: TableHeader[]
+    data: any[]
   
-  const Table = () => {
-    const [organizedData, indexedHeaders] = organizeData(Products, headers)
+    enableActions?: boolean
+    
+    onDelete?: (item : any) => void
+    onDetail?: (item : any) => void
+    onEdit?: (item : any) => void
+  }
+    
+  const Table: React.FC<TableProps> = (props) => {
+    const [organizedData, indexedHeaders] = organizeData(props.data, props.headers)
+    
     return <table className="AppTable">
       <thead>
         <tr>
           {
-            headers.map(header =>
+            props.headers.map(header =>
               <th
                 className={header.right ? 'right' : ''}
                 key={header.key}
@@ -85,7 +53,6 @@ const headers: TableHeader[] = [
                           @e verifica se tem a propriedade right,
                           caso verdadeiro renderiza a classe em branco
                           */
-
                           className={indexedHeaders[item].right ? 'right' : ''}
                         >
                           { row[item] }
