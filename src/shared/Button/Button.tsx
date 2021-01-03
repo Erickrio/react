@@ -4,7 +4,7 @@ import './Button.css'
 declare interface ButtonProps{
     content?: string 
     onClick?: () => void 
-    appendIcon: JSX.Element
+    appendIcon?: JSX.Element //opcional - corrige erro de property is missing type
 }
 
 const Button: React.FC<ButtonProps> = (props) => {
