@@ -25,6 +25,14 @@ function App() {
     ])
   }
 
+  const handleProductUpdate = (newProduct: Product) => {
+    setProducts(products.map(product =>
+      product.id === newProduct.id
+        ? newProduct
+        : product
+    ))
+  }
+
   return (
     <div className="App">
       <Header title="AlgaStock" />
@@ -35,7 +43,9 @@ function App() {
         />
 
         <ProductForm
+          form={products[1]}
           onSubmit={handleProductSubmit}
+          onUpdate={handleProductUpdate}
         />
       </Container>
     </div>
