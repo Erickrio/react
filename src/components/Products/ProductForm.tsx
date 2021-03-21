@@ -18,6 +18,7 @@ export interface ProductCreator {
 }
 
 declare interface ProductFormProps {
+   //returilização de props
   form?: Product
   onSubmit?: (product: ProductCreator) => void
   onUpdate?: (product: Product) => void
@@ -25,9 +26,11 @@ declare interface ProductFormProps {
 
 const ProductForm: React.FC<ProductFormProps> = (props) => {
   const initialFormState: InitialFormState = props.form
+  //operação ternaria - se props exstir -  passa um determado valor
     ? {
         id: props.form.id,
         name: props.form.name,
+         //FORÇA O PRICE SER UMA STRING()
         price: String(props.form.price),
         stock: String(props.form.stock),
       }
@@ -47,7 +50,7 @@ const ProductForm: React.FC<ProductFormProps> = (props) => {
       [name]: value
     })
   }
-
+  //criando método
   const updateProduct = (product: InitialFormState) => {
     const productDto = {
       id: Number(product.id),
@@ -55,7 +58,7 @@ const ProductForm: React.FC<ProductFormProps> = (props) => {
       price: parseFloat(product.price),
       stock: Number(product.stock)
     }
-
+ //verifica se existe (executa o método)
     props.onUpdate &&
       props.onUpdate(productDto)
   }
@@ -70,11 +73,12 @@ const ProductForm: React.FC<ProductFormProps> = (props) => {
     props.onSubmit &&
       props.onSubmit(productDto)
   }
-
+  //se meu form (existir) atualiza
   const handleFormSubmit = () => {
     form.id
       ? updateProduct(form)
-      : createProduct(form)
+     //se não, eu quero criar 
+      : createProduct(form) 
     
     setForm(initialFormState)
   }
