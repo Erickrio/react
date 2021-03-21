@@ -1,6 +1,7 @@
 import React from 'react';
 import organizeData from '../../utils/organizeDataForTable';
 import './Table.scss';
+import Button from '../Button'
  
   export interface TableHeader {
     key: string
@@ -35,6 +36,12 @@ import './Table.scss';
               </th>
             )
           }
+          {
+            props.enableActions 
+            && <th className="right">
+              Actions
+            </th>
+          }
         </tr>
       </thead>
       <tbody>
@@ -60,11 +67,40 @@ import './Table.scss';
                       : null
                   )
               }
-            </tr>
-          })
-        }
-      </tbody>
-    </table>
-  }
+   {
+              props.enableActions
+                && <td className="actions right">
+                  {
+                    props.onEdit &&
+                      <Button
+                        onClick={() => props.onEdit && props.onEdit(row)}
+                      >
+                        Edit
+                      </Button>
+                  }
+                  {
+                    props.onDetail &&
+                      <Button
+                        onClick={() => props.onDetail && props.onDetail(row)}
+                      >
+                        Detail
+                      </Button>
+                  }
+                  {
+                    props.onDelete &&
+                      <Button
+                        onClick={() => props.onDelete && props.onDelete(row)}
+                      >
+                        Delete
+                      </Button>
+                  }
+                </td>
+            }
+          </tr>
+        })
+      }
+    </tbody>
+  </table>
+}
   
   export default Table
