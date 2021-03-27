@@ -55,7 +55,7 @@ import Button from '../Button'
                   .map((item, i) =>
                     item !== '$original'
                       ? <td
-                          key={row.$original.id + i}
+                          key={row.$original._id + i}
                           /*Dentro dos indices indexados ,pega o valor de item(name,price) 
                           @e verifica se tem a propriedade right,
                           caso verdadeiro renderiza a classe em branco
@@ -73,7 +73,7 @@ import Button from '../Button'
                   {
                     props.onEdit &&
                       <Button
-                        onClick={() => props.onEdit && props.onEdit(row)}
+                        onClick={() => props.onEdit && props.onEdit(row.$original)}
                       >
                         Edit
                       </Button>
@@ -81,7 +81,7 @@ import Button from '../Button'
                   {
                     props.onDetail &&
                       <Button
-                        onClick={() => props.onDetail && props.onDetail(row)}
+                        onClick={() => props.onDetail && props.onDetail(row.$original)}
                       >
                         Detail
                       </Button>
@@ -89,7 +89,7 @@ import Button from '../Button'
                   {
                     props.onDelete &&
                       <Button
-                        onClick={() => props.onDelete && props.onDelete(row)}
+                        onClick={() => props.onDelete && props.onDelete(row.$original)}
                       >
                         Delete
                       </Button>
