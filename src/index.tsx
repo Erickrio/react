@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
 import http from './utils/http'
+import {Provider} from 'react-redux'
+import store from './redux/Products';
+
 
 //API DO FETCH
 //fetch('https://jsonplaceholder.typicode.com/posts')
@@ -13,7 +16,9 @@ import http from './utils/http'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
