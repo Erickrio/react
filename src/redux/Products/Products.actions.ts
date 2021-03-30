@@ -1,4 +1,4 @@
-  import { Action } from "./Products.reducer"
+import { Action } from "./Products.reducer"
 import { Product } from "../../shared/Table/Table.mockdata"
 
 export const insertNewProduct = (): Action<Product> => {

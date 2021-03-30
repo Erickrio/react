@@ -2,10 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
-import http from './utils/http'
-import {Provider} from 'react-redux'
-import store from './redux/Products';
-
+import { Provider } from 'react-redux'
+import store from './redux'
 
 //API DO FETCH
 //fetch('https://jsonplaceholder.typicode.com/posts')
