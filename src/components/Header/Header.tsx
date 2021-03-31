@@ -1,14 +1,23 @@
 import React from 'react'
 import './Header.css'
+import { connect } from 'react-redux'
+import { Product } from '../../shared/Table/Table.mockdata'
+import { rootState } from '../../redux'
 
 declare interface HeaderProps {
-    title: string
-  }
-  
-  const Header: React.FC<HeaderProps> = (props) => {
-    return <header className="AppHeader">
-      <h1>{ props.title }</h1>
-    </header>
-  }
+  title: string
+  firstProduct: Product
+}
 
-export default Header
+const Header: React.FC<HeaderProps> = (props) => {
+  return <header className="AppHeader">
+    <h1>{ props.title }</h1>
+    <span>{ props.firstProduct.name }</span>
+  </header>
+}
+
+const mapStateToProps = (state: rootState) => ({
+  firstProduct: state.products[0]
+})
+
+export default connect(mapStateToProps)(Header)
