@@ -1,10 +1,12 @@
-import { 
+import {
   createStore,
   combineReducers,
   compose,
-  applyMiddleware  } from 'redux'
+  applyMiddleware
+} from 'redux'
+import thunk, { ThunkAction } from 'redux-thunk'
 import Products from './Products/Products.reducer'
-import thunk ,{ThunkAction} from 'redux-thunk'
+
 const reducers = combineReducers({
   products: Products
 })
@@ -13,10 +15,9 @@ const store = createStore(
   reducers,
   compose(
     applyMiddleware(thunk),
-     // @ts-ignore
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    // @ts-ignore
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
- 
 )
 
 export interface Action<T = any> {
@@ -24,9 +25,11 @@ export interface Action<T = any> {
   payload?: T
 }
 
-export type rootState = ReturnType<typeof reducers>
+export type RootState = ReturnType<typeof reducers>
 
-export type Thunk<T = any> = 
-ThunkAction<void,rootState,unknown,Action<T>>
+export type Thunk<T = any> =
+  ThunkAction<void, RootState, unknown, Action<T>>
+
+export type ThunkDispatch = (thunk: Thunk) => Promise<Thunk>
 
 export default store
