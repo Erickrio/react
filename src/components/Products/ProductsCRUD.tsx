@@ -7,8 +7,8 @@ import {
 import { Product } from '../../shared/Table/Table.mockdata'
 import ProductForm, { ProductCreator } from './ProductForm'
 import Swal from 'sweetalert2'
-import { connect , useDispatch } from 'react-redux'
-import { getProducts, insertNewProduct } from '../../redux/Products/Products.actions'
+import { connect, useDispatch } from 'react-redux'
+import { insertNewProduct, getProducts } from '../../redux/Products/Products.actions'
 
 const headers: TableHeader[] = [
   { key: 'id', value: '#' },
@@ -27,7 +27,14 @@ const ProductsCRUD: React.FC<ProductsCRUDProps> = (props) => {
   const [updatingProduct, setUpdatingProduct] = useState<Product | undefined>(undefined)
 
   async function fetchData() {
-   dispatch(getProducts())
+    try {
+      console.log('started')
+      await dispatch(getProducts())
+      Swal.fire('Uhu!', 'Fetch done', 'success')
+      console.log('done')
+    } catch (err) {
+      Swal.fire('Oops!', err.message, 'error')
+    }
   }
 
   useEffect(() => {

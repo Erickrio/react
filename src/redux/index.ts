@@ -19,4 +19,9 @@ const store = createStore(
  
 )
 
+export interface Action<T = any> {
+  type: string
+  payload?: T
+}
+
 export default store

@@ -1,5 +1,5 @@
 import { ProductCreator } from './../../components/Products/ProductForm';
-import { Action } from "./Products.reducer"
+import { Action } from ".."
 import { getAllProducts } from "../../services/Products.service"
 
 
